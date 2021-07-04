@@ -1,0 +1,24 @@
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add additional interface</h5>
+        <button type="button" id="close-btn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <label>Type</label>
+          <select class="modal-control form-control" [formControl]="formGroup.controls.type">
+            <option *ngFor="let option of options">{{option.name}}</option>
+          </select>
+
+        <label>Name</label>
+        <input class="modal-control form-control" [formControl]="formGroup.controls.name">
+
+        <label>Interface</label>
+        <textarea class="modal-control form-control" [formControl]="formGroup.controls.value"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="save()" [disabled]="formGroup.invalid">Save changes</button>
+      </div>
+    </div>
+  </div>

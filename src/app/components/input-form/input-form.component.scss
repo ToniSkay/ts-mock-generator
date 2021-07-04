@@ -1,0 +1,27 @@
+.input-areas {
+  display: flex;
+  justify-content: space-between;
+
+  .interface-input, .mock-input {
+    width: 400px;
+    height: 400px;
+  }
+
+  .interface-input {
+    margin-right: 30px;
+  }
+
+  .mock-input {
+    margin-left: 30px;
+  }
+}
+
+.btn {
+  display: block;
+  margin: 20px auto;
+}
+
+.text-labels {
+  display: flex;
+  justify-content: space-between;
+}
