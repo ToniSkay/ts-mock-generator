@@ -5,17 +5,16 @@ import { convertToObject } from '../../shared/utils/convertToObject';
 @Injectable()
 export class InterfaceGeneratorService {
   interfaceControl = new FormControl(JSON.stringify({}), Validators.required);
-  mockControl = new FormControl('', Validators.required);
 
-  constructor() {}
+  mockControl = new FormControl('', Validators.required);
 
   get json() {
     return JSON.parse(this.interfaceControl.value);
   }
 
   generateInterface() {
-    Object.keys(convertToObject(this.mockControl.value)).map(key => {
-      this.setInterface(this.getUpdatedInterface(key))
+    Object.keys(convertToObject(this.mockControl.value)).map((key) => {
+      this.setInterface(this.getUpdatedInterface(key));
     });
   }
 

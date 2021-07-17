@@ -16,7 +16,7 @@
 
   <button
     class="btn btn-primary generate-btn"
-    (click)="generate()"
+    (click)="generatorService.generate(isInterfaceToMockMode)"
     *ngIf="!isInterfaceToMockMode"
   >Generate</button>
 </div>

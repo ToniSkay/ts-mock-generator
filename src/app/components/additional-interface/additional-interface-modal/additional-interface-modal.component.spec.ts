@@ -8,9 +8,9 @@ describe('AdditionalInterfaceModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdditionalInterfaceModalComponent ]
+      declarations: [AdditionalInterfaceModalComponent],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
