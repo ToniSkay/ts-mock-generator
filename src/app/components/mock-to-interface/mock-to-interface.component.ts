@@ -5,5 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './mock-to-interface.component.html',
   styleUrls: ['./mock-to-interface.component.scss'],
 })
-export class MockToInterfaceComponent {
-}
+export class MockToInterfaceComponent {}
