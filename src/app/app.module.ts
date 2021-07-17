@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { InputFormComponent } from './components/input-form/input-form.component';
+import { InterfaceToMockComponent } from './components/interface-to-mock/interface-to-mock.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MockGeneratorService } from './services/mock-generator.service';
 import { AdditionalInterfaceComponent } from './components/additional-interface/additional-interface.component';
@@ -13,25 +13,36 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+import { HeaderComponent } from './components/header/header.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { InterfaceInputComponent } from './components/interface-input/interface-input.component';
+import { MockInputComponent } from './components/mock-input/mock-input.component';
+import { MockToInterfaceComponent } from './components/mock-to-interface/mock-to-interface.component';
+import { InterfaceGeneratorService } from './services/interface-generator.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InputFormComponent,
+    InterfaceToMockComponent,
     AdditionalInterfaceComponent,
     AdditionalInterfaceModalComponent,
+    HeaderComponent,
+    InterfaceInputComponent,
+    MockInputComponent,
+    MockToInterfaceComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    NgSelectModule,
-    MatExpansionModule,
-    BrowserAnimationsModule,
-    MatIconModule,
-  ],
-  providers: [MockGeneratorService, AdditionalInterfaceService],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        NgSelectModule,
+        MatExpansionModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+        MatTabsModule,
+    ],
+  providers: [MockGeneratorService, AdditionalInterfaceService, InterfaceGeneratorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

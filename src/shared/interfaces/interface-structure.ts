@@ -3,4 +3,3 @@ export interface InterfaceStructure {
   value: string;
   type: string;
 }
-//additionalInterface

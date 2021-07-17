@@ -1,0 +1,24 @@
+.header {
+  display: flex;
+  height: 5%;
+  width: 100%;
+  background: rgb(143, 146, 161);
+  background: linear-gradient(18deg, rgba(143, 146, 161, 0.5) 12%, rgba(60, 65, 71, 0.5) 100%);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+  margin: 10px 20px;
+}
+
+app-interface-to-mock, app-mock-to-interface {
+  display: block;
+  width: 960px;
+  margin: 0 auto;
+  text-align: left;
+  padding-top: 150px;
+}
+
+:host::ng-deep .mat-tab-header {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}

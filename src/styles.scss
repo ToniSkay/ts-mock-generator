@@ -9,3 +9,27 @@ html {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.modal-backdrop {
+  z-index: -1;
+}
+
+.default-input {
+  width: 400px;
+  height: 400px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+
+  &.ng-invalid.ng-touched {
+    border-color: $danger;
+  }
+}
+
+.input-areas {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn.generate-btn {
+  display: block;
+  margin: 20px auto;
+}
