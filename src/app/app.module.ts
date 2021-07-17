@@ -20,6 +20,7 @@ import { MockInputComponent } from './components/mock-input/mock-input.component
 import { MockToInterfaceComponent } from './components/mock-to-interface/mock-to-interface.component';
 import { InterfaceGeneratorService } from './services/interface-generator.service';
 import { GeneratorService } from './services/generator.service';
+import { InputFormComponent } from './components/input-form/input-form.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { GeneratorService } from './services/generator.service';
     InterfaceInputComponent,
     MockInputComponent,
     MockToInterfaceComponent,
+    InputFormComponent,
   ],
   imports: [
     BrowserModule,
