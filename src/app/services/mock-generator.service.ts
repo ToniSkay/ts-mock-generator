@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { convertToObject } from '../../shared/utils/convertToObject';
 import { generateSystemName } from '../../shared/utils/generate-system-name';
-import { FormControl, Validators } from '@angular/forms';
 import { PrimitiveTypes } from '../../shared/enums/primitive-types.enum';
 import { getRandomInt } from '../../shared/utils/get-random-int';
 import { AdditionalInterfaceService } from './additional-interface.service';
@@ -12,6 +12,7 @@ type PrimitiveType = string | number | boolean;
 @Injectable()
 export class MockGeneratorService {
   interfaceControl = new FormControl(null, Validators.required);
+
   mockControl = new FormControl(JSON.stringify({}), Validators.required);
 
   constructor(private additionalInterfaceService: AdditionalInterfaceService) {}
@@ -21,12 +22,10 @@ export class MockGeneratorService {
   }
 
   generateMock(): void {
-    Object.keys(convertToObject(this.interfaceControl.value)).map(key =>
-      this.generateMockValue(
-        convertToObject(this.interfaceControl.value)[key],
-        key,
-      ),
-    );
+    Object.keys(convertToObject(this.interfaceControl.value)).map((key) => this.generateMockValue(
+      convertToObject(this.interfaceControl.value)[key],
+      key,
+    ));
   }
 
   private generateMockValue(type: string, key: string): void {
@@ -48,9 +47,9 @@ export class MockGeneratorService {
 
   private isPrimitive(type: string) {
     return (
-      type === PrimitiveTypes.String ||
-      type === PrimitiveTypes.Number ||
-      type === PrimitiveTypes.Boolean
+      type === PrimitiveTypes.String
+      || type === PrimitiveTypes.Number
+      || type === PrimitiveTypes.Boolean
     );
   }
 
@@ -67,6 +66,9 @@ export class MockGeneratorService {
 
       case this.isPrimitive(type):
         return this.getValueByType(type);
+
+      default:
+        return null;
     }
   }
 
@@ -92,14 +94,15 @@ export class MockGeneratorService {
 
     return Object.keys(this.getProcessedInterface(interfaceName))
       .map(
-        key =>
-          (additionalInterface = {
+        (key: string) => {
+          additionalInterface = {
             ...additionalInterface,
             [key]: this.getMockValue(
               this.getProcessedInterface(interfaceName)[key],
               key,
             ),
-          }),
+          };
+        },
       )
       .pop();
   }
@@ -130,8 +133,7 @@ export class MockGeneratorService {
   private isInterface(interfaceName): boolean {
     return Boolean(
       this.additionalInterfaceService.additionalValues.find(
-        ({ name, type }) =>
-          name === interfaceName && type === AdditionalValueTypes.Interface,
+        ({ name, type }) => name === interfaceName && type === AdditionalValueTypes.Interface,
       ),
     );
   }
@@ -139,8 +141,7 @@ export class MockGeneratorService {
   private isEnum(enumName): boolean {
     return Boolean(
       this.additionalInterfaceService.additionalValues.find(
-        ({ name, type }) =>
-          name === enumName && type === AdditionalValueTypes.Enum,
+        ({ name, type }) => name === enumName && type === AdditionalValueTypes.Enum,
       ),
     );
   }

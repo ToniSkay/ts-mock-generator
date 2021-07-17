@@ -1,15 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-mock-to-interface',
   templateUrl: './mock-to-interface.component.html',
-  styleUrls: ['./mock-to-interface.component.scss']
+  styleUrls: ['./mock-to-interface.component.scss'],
 })
-export class MockToInterfaceComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class MockToInterfaceComponent {
 }

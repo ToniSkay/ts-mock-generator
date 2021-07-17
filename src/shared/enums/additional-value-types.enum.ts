@@ -1,4 +1,4 @@
 export enum AdditionalValueTypes {
-  Interface= 'Interface',
-  Enum= 'Enum',
+  Interface = 'Interface',
+  Enum = 'Enum',
 }

@@ -8,9 +8,9 @@ describe('MockToInterfaceComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MockToInterfaceComponent ]
+      declarations: [MockToInterfaceComponent],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

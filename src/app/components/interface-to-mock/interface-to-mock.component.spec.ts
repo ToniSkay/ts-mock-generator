@@ -8,9 +8,9 @@ describe('InputFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InterfaceToMockComponent ]
+      declarations: [InterfaceToMockComponent],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

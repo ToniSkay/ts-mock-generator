@@ -8,9 +8,9 @@ describe('InterfaceInputComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InterfaceInputComponent ]
+      declarations: [InterfaceInputComponent],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
