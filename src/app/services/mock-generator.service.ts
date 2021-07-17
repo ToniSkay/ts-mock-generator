@@ -5,72 +5,72 @@ import { FormControl, Validators } from '@angular/forms';
 import { PrimitiveTypes } from '../../shared/enums/primitive-types.enum';
 import { getRandomInt } from '../../shared/utils/get-random-int';
 import { AdditionalInterfaceService } from './additional-interface.service';
+import { AdditionalValueTypes } from '../../shared/enums/additional-value-types.enum';
+
+type PrimitiveType = string | number | boolean;
 
 @Injectable()
 export class MockGeneratorService {
   interfaceControl = new FormControl(null, Validators.required);
   mockControl = new FormControl(JSON.stringify({}), Validators.required);
 
-  get json() {
-    return JSON.parse(this.mockControl.value)
-  }
-
   constructor(private additionalInterfaceService: AdditionalInterfaceService) {}
 
+  get json() {
+    return JSON.parse(this.mockControl.value);
+  }
+
   generateMock(): void {
-    Object.keys(convertToObject(this.interfaceControl.value)).map((key) =>
+    Object.keys(convertToObject(this.interfaceControl.value)).map(key =>
       this.generateMockValue(
         convertToObject(this.interfaceControl.value)[key],
-        key
-      )
+        key,
+      ),
     );
   }
 
   private generateMockValue(type: string, key: string): void {
-    const json = JSON.parse(this.mockControl.value);
+    const currentMock = JSON.parse(this.mockControl.value);
 
-    if (this.isPrimitive(type)) {
-      this.setMock(json, key, this.getValueByType(type, key))
-    }
-    else if (this.isInterface(type)) {
-      this.setMock(json, key, this.getValueByInterface(type))
-    }
-    else if (this.isEnum(type)) {
-      this.setMock(json, key, this.getValueByEnum(type))
-    }
-    else {
-      return;
-    }
+    this.setMock(currentMock, key, this.getMockValue(type, key));
   }
 
-  private setMock<T,S>(json: T, mockKey: string, mockValue: S): void {
-    json[mockKey] = mockValue;
+  private setMock<T, S>(currentMock: T, mockKey: string, mockValue: S): void {
+    currentMock[mockKey] = mockValue;
 
-    this.mockControl.reset()
-    this.mockControl.setValue(JSON.stringify(json));
+    this.mockControl.reset();
+    this.mockControl.setValue(JSON.stringify(currentMock));
   }
 
   private isSystemName(key: string): boolean {
     return key.includes('systemName') || key.includes('SystemName');
   }
 
-  private isPrimitive(value: string) {
-    return value === PrimitiveTypes.String || value === PrimitiveTypes.Number || value === PrimitiveTypes.Boolean;
+  private isPrimitive(type: string) {
+    return (
+      type === PrimitiveTypes.String ||
+      type === PrimitiveTypes.Number ||
+      type === PrimitiveTypes.Boolean
+    );
   }
 
-  private getValueByType(type: string, key: string) {
-    if (this.isInterface(type)) {
-      return this.getValueByInterface(type)[key];
-    }
+  private getMockValue(type: string, key: string) {
+    switch (true) {
+      case this.isSystemName(key):
+        return generateSystemName();
 
-    if (this.isEnum(type)) {
-      return this.getValueByEnum(type);
-    }
+      case this.isInterface(type):
+        return this.getValueByInterface(type);
 
-    if (this.isSystemName(key)) {
-      return generateSystemName();
-    }
+      case this.isEnum(type):
+        return this.getValueByEnum(type);
 
+      case this.isPrimitive(type):
+        return this.getValueByType(type);
+    }
+  }
+
+  private getValueByType(type: string): PrimitiveType {
     switch (type) {
       case PrimitiveTypes.String: {
         return 'test string';
@@ -90,41 +90,58 @@ export class MockGeneratorService {
   private getValueByInterface(interfaceName: string) {
     let additionalInterface = {};
 
-    return Object.keys(this.getProcessedInterface(interfaceName)).map(
-      (key) =>
-        (additionalInterface = {...additionalInterface, [key]: this.getValueByType(this.getProcessedInterface(interfaceName)[key], key)})
-    ).pop();
+    return Object.keys(this.getProcessedInterface(interfaceName))
+      .map(
+        key =>
+          (additionalInterface = {
+            ...additionalInterface,
+            [key]: this.getMockValue(
+              this.getProcessedInterface(interfaceName)[key],
+              key,
+            ),
+          }),
+      )
+      .pop();
   }
 
   private getProcessedInterface(interfaceName: string) {
     return convertToObject(
-      this.additionalInterfaceService.additionalInterfaces.find(
-        ({name}) => name === interfaceName
-      ).value
+      this.additionalInterfaceService.additionalValues.find(
+        ({ name }) => name === interfaceName,
+      ).value,
     );
   }
 
   private getValueByEnum(enumName: string) {
     const processedEnum = this.getProcessedEnum(enumName);
-    const firstEnumKey = Object.keys(processedEnum)[0]
+    const firstEnumKey = Object.keys(processedEnum)[0];
 
     return processedEnum[firstEnumKey];
   }
 
   private getProcessedEnum(enumName: string) {
     return convertToObject(
-      this.additionalInterfaceService.additionalInterfaces.find(
-        ({name}) => name === enumName
-      ).value
+      this.additionalInterfaceService.additionalValues.find(
+        ({ name }) => name === enumName,
+      ).value,
     );
   }
 
-
   private isInterface(interfaceName): boolean {
-    return Boolean(this.additionalInterfaceService.additionalInterfaces.find(({name, type}) => name === interfaceName && type === 'Interface'))
+    return Boolean(
+      this.additionalInterfaceService.additionalValues.find(
+        ({ name, type }) =>
+          name === interfaceName && type === AdditionalValueTypes.Interface,
+      ),
+    );
   }
 
   private isEnum(enumName): boolean {
-    return Boolean(this.additionalInterfaceService.additionalInterfaces.find(({name, type}) => name === enumName && type === 'Enum'))
+    return Boolean(
+      this.additionalInterfaceService.additionalValues.find(
+        ({ name, type }) =>
+          name === enumName && type === AdditionalValueTypes.Enum,
+      ),
+    );
   }
 }

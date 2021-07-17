@@ -1,0 +1,22 @@
+<div class="interface-input-container">
+  <p>INTERFACE</p>
+  <textarea
+    *ngIf="isInterfaceToMockMode"
+    [formControl]="mockGeneratorService.interfaceControl"
+    class="default-input form-control"
+  ></textarea>
+
+  <pre
+    *ngIf="!isInterfaceToMockMode"
+    class="default-input form-control"
+    contenteditable="true"
+  >{{ interfaceGeneratorService.json | json }}</pre>
+
+  <app-additional-interface *ngIf="isInterfaceToMockMode"></app-additional-interface>
+
+  <button
+    class="btn btn-primary generate-btn"
+    (click)="generate()"
+    *ngIf="!isInterfaceToMockMode"
+  >Generate</button>
+</div>

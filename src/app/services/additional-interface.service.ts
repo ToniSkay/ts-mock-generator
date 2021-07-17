@@ -4,19 +4,19 @@ import { InterfaceStructure } from '../../shared/interfaces/interface-structure'
 
 @Injectable()
 export class AdditionalInterfaceService {
+  additionalValues: InterfaceStructure[] = [];
 
-  additionalInterfaces: InterfaceStructure[] = [];
-
-  constructor() {}
-
-  saveInterface({name, value, type}: InterfaceStructure) {
-    this.additionalInterfaces = [...this.additionalInterfaces, {name, value, type}];
+  saveAdditionalValue({ name, value, type }: InterfaceStructure) {
+    this.additionalValues = [
+      ...this.additionalValues,
+      { name, value, type },
+    ];
   }
 
   remove(name: string) {
-    this.additionalInterfaces.find((item, index) => {
+    this.additionalValues.find((item: InterfaceStructure, index) => {
       if (item.name === name) {
-        this.additionalInterfaces.splice(index, 1);
+        this.additionalValues.splice(index, 1);
       }
     });
   }
