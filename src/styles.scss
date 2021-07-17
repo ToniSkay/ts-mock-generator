@@ -4,11 +4,18 @@ app-root,
 body,
 html {
   height: 100%;
-  background-color: #F6F7FB;
+  background-color: #f6f7fb;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
 
 .modal-backdrop {
   z-index: -1;
@@ -17,7 +24,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .default-input {
   width: 400px;
   height: 400px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 
   &.ng-invalid.ng-touched {
     border-color: $danger;
