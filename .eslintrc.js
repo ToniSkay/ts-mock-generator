@@ -16,6 +16,7 @@ module.exports = {
         "class-methods-use-this": "off",
         "no-param-reassign": "off",
         "array-callback-return": "off",
+        "@typescript-eslint/lines-between-class-members": "off",
         "max-len": ["error", { "code": 150, "ignoreComments": true }]
       },
     },

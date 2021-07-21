@@ -1,3 +1,9 @@
 module.exports = {
-  "extends": "stylelint-config-standard"
+  root: true,
+  extends: ["stylelint-config-standard"],
+  rules: {
+    "selector-pseudo-element-no-unknown": [true, {
+      "ignorePseudoElements": ["ng-deep"]
+    }]
+  },
 };
