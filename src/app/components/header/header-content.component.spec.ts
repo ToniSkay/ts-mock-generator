@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InputFormComponent } from './input-form.component';
+import { HeaderContentComponent } from './header-content.component';
 
-describe('InputFormComponent', () => {
-  let component: InputFormComponent;
-  let fixture: ComponentFixture<InputFormComponent>;
+describe('HeaderComponent', () => {
+  let component: HeaderContentComponent;
+  let fixture: ComponentFixture<HeaderContentComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [InputFormComponent],
+      declarations: [HeaderContentComponent],
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InputFormComponent);
+    fixture = TestBed.createComponent(HeaderContentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

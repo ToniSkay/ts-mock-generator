@@ -1,10 +1,10 @@
 <div class="mock-input-container">
-  <p>MOCK</p>
+  <p class='input-name'>MOCK</p>
 
   <textarea
+    class="default-input form-control"
     *ngIf="!isInterfaceToMockMode"
     [formControl]="interfaceGeneratorService.mockControl"
-    class="default-input form-control"
   ></textarea>
 
   <pre

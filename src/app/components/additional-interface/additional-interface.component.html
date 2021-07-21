@@ -1,11 +1,10 @@
-<div class="interfaces">
+<div class='additional-interfaces'>
 
   <button class="btn btn-link btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
     <span class="title">+ Add additional data</span>
   </button>
 
-  <div class="interface"
-       *ngFor="let interface of additionalInterfaceService.additionalValues; trackBy: identify; let i = index ">
+  <div class="interface" *ngFor="let interface of additionalInterfaceService.additionalValues; trackBy: identify; let i = index ">
 
     <mat-expansion-panel hideToggle>
       <mat-expansion-panel-header>

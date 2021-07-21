@@ -14,13 +14,12 @@ import { MockGeneratorService } from './services/mock-generator.service';
 import { AdditionalInterfaceComponent } from './components/additional-interface/additional-interface.component';
 import { AdditionalInterfaceModalComponent } from './components/additional-interface/additional-interface-modal/additional-interface-modal.component';
 import { AdditionalInterfaceService } from './services/additional-interface.service';
-import { HeaderComponent } from './components/header/header.component';
+import { HeaderContentComponent } from './components/header/header-content.component';
 import { InterfaceInputComponent } from './components/interface-input/interface-input.component';
 import { MockInputComponent } from './components/mock-input/mock-input.component';
 import { MockToInterfaceComponent } from './components/mock-to-interface/mock-to-interface.component';
 import { InterfaceGeneratorService } from './services/interface-generator.service';
 import { GeneratorService } from './services/generator.service';
-import { InputFormComponent } from './components/input-form/input-form.component';
 
 @NgModule({
   declarations: [
@@ -28,11 +27,10 @@ import { InputFormComponent } from './components/input-form/input-form.component
     InterfaceToMockComponent,
     AdditionalInterfaceComponent,
     AdditionalInterfaceModalComponent,
-    HeaderComponent,
+    HeaderContentComponent,
     InterfaceInputComponent,
     MockInputComponent,
     MockToInterfaceComponent,
-    InputFormComponent,
   ],
   imports: [
     BrowserModule,

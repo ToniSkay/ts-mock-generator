@@ -10,7 +10,6 @@ import { GeneratorService } from '../../services/generator.service';
 })
 export class MockInputComponent {
   @Input() isResultInput: boolean;
-
   @Input() isInterfaceToMockMode = true;
 
   constructor(

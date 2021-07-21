@@ -1,0 +1,12 @@
+app-interface-to-mock,
+app-mock-to-interface {
+  display: block;
+  width: 960px;
+  margin: 0 auto;
+  text-align: left;
+  padding-top: 150px;
+}
+
+:host::ng-deep .mat-tab-header {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}

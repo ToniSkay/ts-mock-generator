@@ -1,14 +1,15 @@
 <div class="interface-input-container">
-  <p>INTERFACE</p>
+  <p class='input-name'>INTERFACE</p>
+
   <textarea
+    class="default-input form-control"
     *ngIf="isInterfaceToMockMode"
     [formControl]="mockGeneratorService.interfaceControl"
-    class="default-input form-control"
   ></textarea>
 
   <pre
-    *ngIf="!isInterfaceToMockMode"
     class="default-input form-control"
+    *ngIf="!isInterfaceToMockMode"
     contenteditable="true"
   >{{ interfaceGeneratorService.json | json }}</pre>
 
