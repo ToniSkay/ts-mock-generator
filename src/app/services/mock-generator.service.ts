@@ -103,6 +103,8 @@ export class MockGeneratorService {
               key,
             ),
           };
+
+          return additionalInterface;
         },
       )
       .pop();
