@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { InterfaceToMockComponent } from './components/interface-to-mock/interface-to-mock.component';
 import { MockGeneratorService } from './services/mock-generator.service';
 import { AdditionalInterfaceComponent } from './components/additional-interface/additional-interface.component';
-import { AdditionalInterfaceModalComponent } from './components/additional-interface/additional-interface-modal/additional-interface-modal.component';
+import { AdditionalInterfaceModalComponent } from './components/additional-interface/components/additional-interface-modal/additional-interface-modal.component';
 import { AdditionalInterfaceService } from './services/additional-interface.service';
 import { HeaderContentComponent } from './components/header/header-content.component';
 import { InterfaceInputComponent } from './components/interface-input/interface-input.component';
