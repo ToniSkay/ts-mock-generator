@@ -21,7 +21,7 @@ export class MockGeneratorService {
     return JSON.parse(this.mockControl.value);
   }
 
-  generateMock(): void {
+  generateMock() {
     this.mockControl.setValue(JSON.stringify({}));
 
     Object.keys(convertToObject(this.interfaceControl.value)).map((key) => this.generateMockValue(
@@ -30,13 +30,13 @@ export class MockGeneratorService {
     ));
   }
 
-  private generateMockValue(type: string, key: string): void {
+  private generateMockValue(type: string, key: string) {
     const currentMock = JSON.parse(this.mockControl.value);
 
     this.setMock(currentMock, key, this.getMockValue(type, key));
   }
 
-  private setMock<T, S>(currentMock: T, mockKey: string, mockValue: S): void {
+  private setMock<T, S>(currentMock: T, mockKey: string, mockValue: S) {
     currentMock[mockKey] = mockValue;
 
     this.mockControl.setValue(JSON.stringify(currentMock));
