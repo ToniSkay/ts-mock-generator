@@ -9,7 +9,6 @@ import { GeneratorService } from '../../services/generator.service';
   styleUrls: ['./mock-input.component.scss'],
 })
 export class MockInputComponent {
-  @Input() isResultInput: boolean;
   @Input() isInterfaceToMockMode = true;
 
   constructor(
