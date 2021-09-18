@@ -1,27 +1,32 @@
-# TsMockGenerator
+# TS Mock Generator
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
+This project was created for generating json mocks from typescript interfaces and vice versa.
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Guide for use
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### If you want create json mock from interface:
+ - You need to select `Interface To Mock` tab in header.
+ - Then you need fill textarea with 'INTERFACE' name.
+    - Interface should equal structure base typescript interfaces, for example: `{ color: string; width: boolean; }`.
+ - Click to 'Generate' button.
+ - Pay attention to  another textarea with 'MOCK' name. There you can see mock based on your interface.
 
-## Build
+##### TS Mock Generator supports almost all modern tips in intrefaces, such as: 
+ - Optional Properties. `{ color?: string; width?: number; }`
+ - Double type with `undefined` (other types support will be add in next releases) `{ color: string | undefined; width: number | undefined; }`
+ - Another interface in type. `{ color: ColorInterface; width: WidthInterface; }`.
+ - Enum in type. `{ color: ColorEnum; width: WidthEnum; }`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+##### If you want add additional interface or enum:
+ - Click to "Add additional data" button.
+ - Pay attention to modal window.
+ - Select type in first field. Interface or Enum.
+ - Provide name in second field (name need to equal interface/enum name in base interface).
+ - Provide interface or mock in third field.
+ - Click 'Save changes' button.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Also you can remove not needed additional interface by click to trash can icon.
