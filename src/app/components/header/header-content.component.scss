@@ -7,6 +7,14 @@ app-mock-to-interface {
   padding-top: 150px;
 }
 
-:host::ng-deep .mat-tab-header {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+:host::ng-deep {
+  .mat-tab-header {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .mat-tab-labels {
+    display: flex;
+    justify-content: center;
+    margin-right: 50px;
+  }
 }
