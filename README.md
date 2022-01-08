@@ -1,6 +1,8 @@
 # TS Mock Generator
 
 This project was created for generating json mocks from typescript interfaces and vice versa.
+<br><br>
+<a href="https://toniskay.github.io/ts-mock-generator/">DEMO</a>
 
 ## Development server
 
